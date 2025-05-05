@@ -1,76 +1,51 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import Login from '../components/auth/Login';
+import Signup from '../components/auth/Signup';
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [authMode, setAuthMode] = useState('login');
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!form.email || !form.password) {
-      alert("Please fill in all fields");
-      return;
-    }
-
-    if (isLogin) {
-      // login logic (mock)
-      console.log("Logging in:", form);
-    } else {
-      // signup logic (mock)
-      console.log("Signing up:", form);
-    }
-
-    // Reset form
-    setForm({ email: "", password: "" });
+  const toggleAuthMode = () => {
+    setAuthMode(authMode === 'login' ? 'signup' : 'login');
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4">
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
-          {isLogin ? "Login to Connexus" : "Create an Account"}
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="w-full px-4 py-2 border rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="w-full px-4 py-2 border rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
-          >
-            {isLogin ? "Login" : "Sign Up"}
-          </button>
-        </form>
-
-        <p className="text-center text-sm text-gray-500 mt-4">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-blue-500 hover:underline"
-          >
-            {isLogin ? "Sign Up" : "Login"}
-          </button>
-        </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+        <div className="flex justify-center mb-8">
+          <h1 className="text-3xl font-bold text-blue-600">Connexus</h1>
+        </div>
+        
+        <div className="mb-6 flex justify-center">
+          <div className="flex space-x-2 bg-gray-200 p-1 rounded-md">
+            <button
+              onClick={() => setAuthMode('login')}
+              className={`px-4 py-2 rounded-md transition ${
+                authMode === 'login'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              Login
+            </button>
+            <button
+              onClick={() => setAuthMode('signup')}
+              className={`px-4 py-2 rounded-md transition ${
+                authMode === 'signup'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+        
+        {authMode === 'login' ? (
+          <Login toggleAuthMode={toggleAuthMode} />
+        ) : (
+          <Signup toggleAuthMode={toggleAuthMode} />
+        )}
       </div>
     </div>
   );

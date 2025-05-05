@@ -29,8 +29,8 @@ const Navbar = () => {
             <Link to={`/profile/${userId}`} className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
               Profile
             </Link>
-            <Link to="/auth" className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
-              Login
+            <Link to="/" className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
+              Logout
             </Link>
           </div>
 

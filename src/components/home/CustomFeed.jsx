@@ -7,11 +7,9 @@ const CustomFeed = () => {
   useEffect(() => {
     const fetchFeed = async () => {
       try {
-        const [userRes, photoRes] = await Promise.all([
-          fetch("https://randomuser.me/api/?results=50"),
-          fetch("https://jsonplaceholder.typicode.com/photos?_limit=50"),
-        ]);
-
+        
+        const userRes = await fetch("https://randomuser.me/api/?results=50");
+        const photoRes = await fetch("https://jsonplaceholder.typicode.com/photos?_limit=50");
         const userData = await userRes.json();
         const photoData = await photoRes.json();
 

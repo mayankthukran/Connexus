@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         {/* <AuthProvider> */}
           <Routes>
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<AuthPage />} />
+            <Route path="/home" element={<HomePage />} />
             {/* <Route path="/explore" element={<ProtectedRoute><ExplorePage /></ProtectedRoute>} /> */}
             {/* <Route path="/saved" element={<ProtectedRoute><SavedPage /></ProtectedRoute>} /> */}
             {/* <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} /> */}
@@ -22,18 +22,30 @@ function App() {
         {/* </AuthProvider> */}
       </BrowserRouter>
       </div>
-    // <BrowserRouter>
-    //   <AuthProvider>
-    //     <Routes>
-    //       {/* <Route path="/auth" element={<AuthPage />} /> */}
-    //       <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
-    //       <Route path="/explore" element={<ProtectedRoute><ExplorePage /></ProtectedRoute>} />
-    //       {/* <Route path="/saved" element={<ProtectedRoute><SavedPage /></ProtectedRoute>} /> */}
-    //       {/* <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} /> */}
-    //     </Routes>
-    //   </AuthProvider>
-    // </BrowserRouter>
   );
 }
 
 export default App;
+
+// function App() {
+//   // Check if user is logged in
+//   const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Routes>
+//           <Route path="/" element={<AuthPage />} />
+//           <Route 
+//             path="/home" 
+//             element={isLoggedIn ? <HomePage /> : <Navigate to="/" />} 
+//           />
+//           {/* Redirect any unknown routes to AuthPage */}
+//           <Route path="*" element={<Navigate to="/" />} />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
