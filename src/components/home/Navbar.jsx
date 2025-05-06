@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState } from "react";
 import { X, Menu } from "lucide-react"; // Optional: replace with emojis if you don’t use lucide-react
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const userId = "123"; // Replace with logged-in user ID from context or auth
 

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-// import ExplorePage from './pages/ExplorePage';
+import ExplorePage from './pages/ExplorePage';
 // import SavedPage from './pages/SavedPage';
 // import ProfilePage from './pages/ProfilePage';
 import AuthPage from './pages/AuthPage';
@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthPage />} />
             <Route path="/home" element={<HomePage />} />
-            {/* <Route path="/explore" element={<ProtectedRoute><ExplorePage /></ProtectedRoute>} /> */}
+            <Route path="/explore" element={<ExplorePage />} />
             {/* <Route path="/saved" element={<ProtectedRoute><SavedPage /></ProtectedRoute>} /> */}
             {/* <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} /> */}
           </Routes>

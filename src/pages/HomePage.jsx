@@ -1,4 +1,3 @@
-// src/pages/HomePage.jsx
 import Navbar from '../components/home/Navbar';
 import CustomFeed from '../components/home/CustomFeed';
 import TopCreators from '../components/home/TopCreators';

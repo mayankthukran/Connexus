@@ -13,7 +13,6 @@ const CustomFeed = () => {
         const userData = await userRes.json();
         const photoData = await photoRes.json();
 
-        // Combine users with photos
         const combined = userData.results.map((user, index) => ({
           user,
           photo: photoData[index],

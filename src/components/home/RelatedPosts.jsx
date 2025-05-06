@@ -14,15 +14,12 @@ const PopularPosts = () => {
 
         const users = await userRes.json();
         const photos = await photoRes.json();
-
-        // Combine data with mock like count
         const combined = users.results.map((user, i) => ({
           user,
           photo: photos[i],
-          likes: Math.floor(Math.random() * 1000), // mock likes
+          likes: Math.floor(Math.random() * 1000)
         }));
 
-        // Sort by likes (descending)
         combined.sort((a, b) => b.likes - a.likes);
 
         setPopular(combined);
@@ -40,7 +37,7 @@ const PopularPosts = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold text-blue-600 mb-4">Popular Today</h2>
+      <h2 className="text-xl font-bold text-blue-600 mb-4">Related Post</h2>
       <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
         {popular.map((post, index) => (
           <div
