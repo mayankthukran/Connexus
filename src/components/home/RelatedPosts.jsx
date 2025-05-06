@@ -8,8 +8,8 @@ const PopularPosts = () => {
     const fetchPopularPosts = async () => {
       try {
         const [userRes, photoRes] = await Promise.all([
-          fetch("https://randomuser.me/api/?results=20"),
-          fetch("https://jsonplaceholder.typicode.com/photos?_limit=20"),
+          fetch("https://randomuser.me/api/?results=10"),
+          fetch("https://jsonplaceholder.typicode.com/photos?_limit=10"),
         ]);
 
         const users = await userRes.json();
@@ -41,7 +41,7 @@ const PopularPosts = () => {
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold text-blue-600 mb-4">Popular Today</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
         {popular.map((post, index) => (
           <div
             key={index}
@@ -49,7 +49,7 @@ const PopularPosts = () => {
           >
             {/* Post image */}
             <img
-              src={post.photo.url}
+              src={`https://picsum.photos/200/300?random=${index+1}`}
               alt={post.photo.title}
               className="rounded-md mb-3 h-48 w-full object-cover"
             />

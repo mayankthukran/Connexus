@@ -33,7 +33,7 @@ const CustomFeed = () => {
   if (loading) return <p className="text-center mt-10 text-lg">Loading feed...</p>;
 
   return (
-    <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 mt-6">
       {posts.map((post, index) => (
         <div
           key={index}
@@ -56,9 +56,9 @@ const CustomFeed = () => {
 
           {/* Post image from JSONPlaceholder */}
           <img
-            src={post.photo.url}
-            alt={post.photo.thumbnail}
-            className="rounded-md mb-4 w-full h-48 object-cover"
+            src={`https://picsum.photos/200/300?random=${index+1}`}
+            alt={`https://picsum.photos/200/300?random=${index+1}`}
+            className="rounded-md mb-4 w-full h-96 object-cover"
           />
 
           {/* Post caption from photo title */}

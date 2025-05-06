@@ -9,15 +9,15 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white dark:bg-gray-900 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-blue-600">
+      <nav className="bg-white dark:bg-gray-900 shadow-md rounded-xl mt-6 p-6">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col justify-between items-center gap-20">
+          <Link to="/home" className="text-2xl font-bold text-blue-600">
             Connexus
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex gap-6 items-center">
-            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
+          <div className="hidden md:flex flex-col gap-10 items-center">
+            <Link to="/home" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
               Home
             </Link>
             <Link to="/explore" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
@@ -29,8 +29,10 @@ const Navbar = () => {
             <Link to={`/profile/${userId}`} className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
               Profile
             </Link>
+          </div>
+          <div className="hidden md:flex mt-60">
             <Link to="/" className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
-              Logout
+                Logout
             </Link>
           </div>
 
