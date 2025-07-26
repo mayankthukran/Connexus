@@ -58,7 +58,7 @@ const ExplorePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#DFD0B8]">
       {/* Mobile navbar - only visible on small screens */}
       <div className="lg:hidden fixed top-0 left-0 right-0 bg-white z-10 shadow-md p-4">
         <div className="flex items-center justify-between">
@@ -83,8 +83,8 @@ const ExplorePage = () => {
         </div>
       )}
 
-      <div className="max-w-screen mx-4 lg:mx-16 py-6 sm:px-6 lg:px-8 max-h-screen">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-20">
+      <div className="max-w-screen mx-4  py-6 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-15">
           {/* Fixed left sidebar - hidden on mobile */}
           <div className="hidden lg:block lg:col-span-2 sticky top-6 self-start">
             <Navbar />
@@ -92,7 +92,7 @@ const ExplorePage = () => {
           
           {/* Scrollable middle feed - full width on mobile */}
           <div className="lg:col-span-5 mt-16 lg:mt-6">
-            <div className="bg-white rounded-lg shadow p-6 mb-8 dark:bg-gray-800 h-[calc(100vh-5rem)] lg:h-[calc(100vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
+            <div className="bg-white rounded-lg shadow p-6 mb-8 dark:bg-gray-800 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
               <Search 
                 searchQuery={searchQuery}
                 onSearch={handleSearch}
@@ -140,7 +140,7 @@ const ExplorePage = () => {
           
           {/* Fixed right sidebar - hidden on mobile */}
           <div className="hidden lg:block lg:col-span-3 sticky mt-6 self-start">
-            <div className="mb-6 h-[calc(100vh-5rem)] lg:h-[calc(100vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
+            <div className="mb-6 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
               <PopularToday />
             </div>
           </div>

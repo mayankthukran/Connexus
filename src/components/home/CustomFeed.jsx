@@ -36,10 +36,10 @@ const CustomFeed = () => {
       {posts.map((post, index) => (
         <div
           key={index}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 transition hover:shadow-lg"
+          className="bg-white dark:bg-[#393E46] rounded-xl shadow-md p-2 transition hover:shadow-lg"
         >
           {/* User info */}
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-4 m-2">
             <img
               src={post.user.picture.thumbnail}
               alt="avatar"
@@ -61,12 +61,12 @@ const CustomFeed = () => {
           />
 
           {/* Post caption from photo title */}
-          <p className="text-gray-700 dark:text-gray-200 text-sm">
+          <p className="text-gray-700 dark:text-gray-200 text-sm m-2">
             {post.photo.title}
           </p>
 
           {/* Actions */}
-          <div className="flex justify-between mt-4 text-sm text-gray-500">
+          <div className="flex justify-between m-2 text-sm text-gray-500">
             <span>👍 Like</span>
             <span>💬 Comment</span>
             <span>🔖 Save</span>

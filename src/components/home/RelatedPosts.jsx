@@ -37,12 +37,12 @@ const PopularPosts = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold text-blue-600 mb-4">Related Post</h2>
+      <h2 className="text-xl font-bold text-[#222831] mb-4">Related Post</h2>
       <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
         {popular.map((post, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 transition hover:shadow-lg"
+            className="bg-white dark:bg-[#393E46] rounded-xl shadow-md p-2 transition hover:shadow-lg"
           >
             {/* Post image */}
             <img
