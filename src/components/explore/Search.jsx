@@ -31,7 +31,7 @@ const Search = ({ searchQuery, onSearch, onClear }) => {
           value={query}
           onChange={handleInputChange}
           placeholder="Search users..."
-          className="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-3 pl-10 rounded-lg border bg-[#222831] border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <span className="absolute left-3 top-3 text-gray-400">
           {/* Search icon */}

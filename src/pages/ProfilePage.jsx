@@ -50,7 +50,7 @@ const ProfilePage = () => {
           </div>
           
           {/* Main content area - full width on mobile */}
-          <div className="col-span-1 lg:col-span-8 mt-16 lg:mt-5">
+          <div className="col-span-1 lg:col-span-5 mt-16 lg:mt-5">
             {/* User Profile Section */}
             <div className="mb-6">
               <UserProfile />
@@ -60,18 +60,19 @@ const ProfilePage = () => {
             <div className="mb-6">
               <CreatePost />
             </div>
-
+          </div>
+          <div className="col-span-1 lg:col-span-3 mt-16 lg:mt-5">
             {/* Tabs Section */}
             <div className="mb-6">
-              <div className=" rounded-lg shadow-md p-4">
+              <div className=" rounded-lg shadow-md p-2">
                 <div className="flex border-b border-gray-200 mb-4">
                   {tabs.map(tab => (
                     <button
                       key={tab.id}
                       className={`px-6 py-3 -mb-px text-sm font-medium transition-colors ${
                         activeTab === tab.id
-                          ? 'text-blue-600 border-b-2 border-blue-600'
-                          : 'text-gray-500 hover:text-gray-700'
+                          ? 'text-[#222831] border-b-2 border-[#222831]'
+                          : 'text-gray-500 hover:text-[#393E46]'
                       }`}
                       onClick={() => setActiveTab(tab.id)}
                     >
@@ -81,7 +82,7 @@ const ProfilePage = () => {
                 </div>
                 
                 {/* Tab Content */}
-                <div className="h-[calc(60vh-2rem)] overflow-y-auto pr-0 lg:pr-2">
+                <div className="h-[calc(84vh-2rem)] overflow-y-auto pr-0 ">
                   <ActiveComponent />
                 </div>
               </div>

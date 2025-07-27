@@ -87,7 +87,7 @@ const CustomFeed = () => {
       {posts.map((post) => (
         <div
           key={post.id}
-          className="bg-[#393E46] rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
+          className="rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
         >
           {/* Post Header */}
           <div className="flex items-center justify-between p-4 pb-2">
@@ -99,15 +99,15 @@ const CustomFeed = () => {
               />
               <div>
                 <div className="flex items-center space-x-2">
-                  <h3 className="font-semibold text-gray-800 dark:text-white">
+                  <h3 className="font-semibold text-gray-800">
                     {post.user.name.first} {post.user.name.last}
                   </h3>
                   <button
                     onClick={() => handleFollow(post.id)}
                     className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
                       post.isFollowing
-                        ? 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200'
-                        : 'bg-[#948979] text-white hover:bg-blue-600'
+                        ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        : 'bg-[#393E46] text-white hover:bg-[#948979]'
                     }`}
                   >
                     {post.isFollowing ? (
@@ -123,21 +123,21 @@ const CustomFeed = () => {
                     )}
                   </button>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center space-x-2 text-sm text-gray-500">
                   <span>{post.user.location.country}</span>
                   <span>•</span>
                   <span>{post.timeAgo}</span>
                 </div>
               </div>
             </div>
-            <button className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+            <button className="text-[#222831] hover:text-[#948979]">
               <MoreHorizontal className="w-5 h-5" />
             </button>
           </div>
 
           {/* Post Content */}
           <div className="px-4 pb-2">
-            <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
+            <p className="text-gray-800 leading-relaxed">
               {post.photo.title}
             </p>
           </div>
@@ -152,28 +152,28 @@ const CustomFeed = () => {
           </div>
 
           {/* Post Actions */}
-          <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100 dark:border-gray-600">
+          <div className="flex items-center justify-between px-4 py-3 border-t border-gray-600">
             <div className="flex items-center space-x-6">
               <button 
                 onClick={() => handleLike(post.id)}
                 className={`flex items-center space-x-2 transition-all duration-200 ${
                   post.isLiked 
                     ? 'text-red-500 scale-105' 
-                    : 'text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400'
+                    : 'text-[#222831] hover:text-red-500'
                 }`}
               >
                 <Heart className={`w-5 h-5 ${post.isLiked ? 'fill-current' : ''}`} />
                 <span className="text-sm font-medium">{post.likes}</span>
               </button>
               
-              <button className="flex items-center space-x-2 text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+              <button className="flex items-center space-x-2 text-[#222831] hover:text-blue-500 transition-colors">
                 <MessageCircle className="w-5 h-5" />
                 <span className="text-sm font-medium">{post.comments}</span>
               </button>
               
               <button 
                 onClick={() => handleShare(post.id)}
-                className="flex items-center space-x-2 text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
+                className="flex items-center space-x-2 text-[#222831] hover:text-green-500 transition-colors"
               >
                 <Share2 className="w-5 h-5" />
                 <span className="text-sm font-medium">{post.shares}</span>
@@ -185,7 +185,7 @@ const CustomFeed = () => {
               className={`transition-all duration-200 ${
                 post.isSaved 
                   ? 'text-blue-600 scale-110' 
-                  : 'text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400'
+                  : 'text-[#222831] hover:text-blue-600'
               }`}
               title={post.isSaved ? "Remove from saved" : "Save post"}
             >
@@ -201,7 +201,7 @@ const CustomFeed = () => {
       
       {/* Load More Button */}
       <div className="text-center py-6">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors dark:bg-blue-600 dark:hover:bg-blue-700">
+        <button className="bg-[#222831] hover:bg-[#948979] text-white px-6 py-2 rounded-lg transition-colors">
           Load More Posts
         </button>
       </div>

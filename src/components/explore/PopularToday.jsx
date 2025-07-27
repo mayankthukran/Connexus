@@ -201,7 +201,7 @@ const PopularToday = () => {
           {activeContent.map((post, index) => (
             <div
               key={post.id}
-              className="bg-white dark:bg-[#393E46] rounded-xl shadow-sm border border-gray-100 dark:border-gray-600 hover:shadow-md transition-shadow duration-200"
+              className="rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               {/* Post Header */}
               <div className="flex items-center justify-between p-3 pb-2">
@@ -213,15 +213,15 @@ const PopularToday = () => {
                   />
                   <div>
                     <div className="flex items-center space-x-2">
-                      <p className="text-gray-800 dark:text-white font-medium text-sm">
+                      <p className="text-gray-800 font-medium text-sm">
                         {post.user.name.first} {post.user.name.last}
                       </p>
                       <button
                         onClick={() => handleFollow(post.id)}
                         className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
                           post.isFollowing
-                            ? 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200'
-                            : 'bg-[#948979] text-white hover:bg-blue-600'
+                            ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                            : 'bg-[#222831] text-white hover:bg-[#948979]'
                         }`}
                       >
                         {post.isFollowing ? (
@@ -231,14 +231,14 @@ const PopularToday = () => {
                         )}
                       </button>
                     </div>
-                    <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center space-x-2 text-xs text-gray-500">
                       <span>@{post.user.login.username}</span>
                       <span>•</span>
                       <span>{post.timeAgo}</span>
                     </div>
                   </div>
                 </div>
-                <button className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+                <button className="text-[#222831] hover:text-gray-600">
                   <MoreHorizontal className="w-4 h-4" />
                 </button>
               </div>
@@ -254,7 +254,7 @@ const PopularToday = () => {
 
               {/* Post Content */}
               <div className="px-3 pb-2">
-                <p className="text-gray-700 dark:text-gray-200 text-sm font-medium">
+                <p className="text-[#222831] text-sm font-medium">
                   {post.photo.title.charAt(0).toUpperCase() + post.photo.title.slice(1)}
                 </p>
               </div>
@@ -267,21 +267,21 @@ const PopularToday = () => {
                     className={`flex items-center space-x-1 transition-all duration-200 ${
                       post.isLiked 
                         ? 'text-red-500 scale-105' 
-                        : 'text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400'
+                        : 'text-[#222831] hover:text-red-500'
                     }`}
                   >
                     <Heart className={`w-4 h-4 ${post.isLiked ? 'fill-current' : ''}`} />
                     <span className="text-xs font-medium">{post.likes}</span>
                   </button>
                   
-                  <button className="flex items-center space-x-1 text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                  <button className="flex items-center space-x-1 text-[#222831] hover:text-blue-500 transition-colors">
                     <MessageCircle className="w-4 h-4" />
                     <span className="text-xs font-medium">{post.comments}</span>
                   </button>
                   
                   <button 
                     onClick={() => handleShare(post.id)}
-                    className="flex items-center space-x-1 text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
+                    className="flex items-center space-x-1 text-[#222831] hover:text-green-500 transition-colors"
                   >
                     <Share2 className="w-4 h-4" />
                     <span className="text-xs font-medium">{post.shares}</span>
@@ -293,7 +293,7 @@ const PopularToday = () => {
                   className={`transition-all duration-200 ${
                     post.isSaved 
                       ? 'text-blue-600 scale-110' 
-                      : 'text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400'
+                      : 'text-[#222831] hover:text-blue-600'
                   }`}
                   title={post.isSaved ? "Remove from saved" : "Save post"}
                 >
@@ -311,7 +311,7 @@ const PopularToday = () => {
       
       {/* View All Button */}
       <div className="text-center mt-4">
-        <button className="bg-[#222831] hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-color">
+        <button className="bg-[#222831] hover:bg-[#948979] text-white px-4 py-2 rounded-lg text-sm transition-color">
           View All Popular
         </button>
       </div>

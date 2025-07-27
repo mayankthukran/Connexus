@@ -92,7 +92,7 @@ const ExplorePage = () => {
           
           {/* Scrollable middle feed - full width on mobile */}
           <div className="lg:col-span-5 mt-16 lg:mt-6">
-            <div className="rounded-lg shadow p-3 mb-8 bg-[#393E46] h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto ">
+            <div className="rounded-lg shadow p-3 mb-8 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto ">
               <Search 
                 searchQuery={searchQuery}
                 onSearch={handleSearch}
@@ -130,7 +130,7 @@ const ExplorePage = () => {
               
               {!searchQuery && !error && (
                 <div className="mt-6">
-                  <h2 className="text-xl font-semibold text-[#948979] mb-4">Suggested Users</h2>
+                  <h2 className="text-xl font-semibold text-[#222831] mb-4">Suggested Users</h2>
                   {/* Using empty users prop so component will fetch from APIs */}
                   <UserProfiles />
                 </div>

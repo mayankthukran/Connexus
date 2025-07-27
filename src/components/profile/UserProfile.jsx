@@ -45,7 +45,7 @@ const UserProfile = () => {
             className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover"
           />
           {isOwnProfile && (
-            <button className="absolute bottom-2 right-2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-all">
+            <button className="absolute bottom-2 right-2 bg-[#222831] text-white p-2 rounded-full hover:bg-[#948979] transition-all">
               <Camera className="w-3 h-3" />
             </button>
           )}
@@ -110,7 +110,7 @@ const UserProfile = () => {
             </div>
             <div className="flex items-center space-x-1">
               <ExternalLink className="w-4 h-4" />
-              <a href={`https://${user.website}`} className="text-blue-500 hover:underline">
+              <a href={`https://connexus-pied.vercel.app/`} className="text-blue-500 hover:underline">
                 {user.website}
               </a>
             </div>

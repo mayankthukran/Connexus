@@ -93,7 +93,7 @@ const CreatePost = () => {
               <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
                 <div className="flex items-center space-x-4">
                   {/* Image Upload */}
-                  <label className="cursor-pointer text-blue-500 hover:text-blue-600 transition-colors">
+                  <label className="cursor-pointer text-[#393E46] hover:text-blue-600 transition-colors">
                     <Image className="w-5 h-5" />
                     <input
                       type="file"
@@ -105,22 +105,22 @@ const CreatePost = () => {
                   </label>
 
                   {/* Video Upload */}
-                  <button className="text-blue-500 hover:text-blue-600 transition-colors">
+                  <button className="text-[#393E46] hover:text-blue-600 transition-colors">
                     <Video className="w-5 h-5" />
                   </button>
 
                   {/* Emoji */}
-                  <button className="text-blue-500 hover:text-blue-600 transition-colors">
+                  <button className="text-[#393E46] hover:text-blue-600 transition-colors">
                     <Smile className="w-5 h-5" />
                   </button>
 
                   {/* Location */}
-                  <button className="text-blue-500 hover:text-blue-600 transition-colors">
+                  <button className="text-[#393E46] hover:text-blue-600 transition-colors">
                     <MapPin className="w-5 h-5" />
                   </button>
 
                   {/* Hashtag */}
-                  <button className="text-blue-500 hover:text-blue-600 transition-colors">
+                  <button className="text-[#393E46] hover:text-blue-600 transition-colors">
                     <Hash className="w-5 h-5" />
                   </button>
                 </div>
@@ -131,7 +131,7 @@ const CreatePost = () => {
                   disabled={!postContent.trim() && selectedImages.length === 0}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     postContent.trim() || selectedImages.length > 0
-                      ? 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-[#393E46] text-white hover:bg-[#948979]'
                       : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                   }`}
                 >

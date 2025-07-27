@@ -92,17 +92,17 @@ const LikedPosts = () => {
     }
   ]);
 
-  const handleLike = (postId) => {
-    setLikedPosts(likedPosts.map(post => 
-      post.id === postId 
-        ? { 
-            ...post, 
-            likes: post.isLiked ? post.likes - 1 : post.likes + 1, 
-            isLiked: !post.isLiked 
-          }
-        : post
-    ));
-  };
+  // const handleLike = (postId) => {
+  //   setLikedPosts(likedPosts.map(post => 
+  //     post.id === postId 
+  //       ? { 
+  //           ...post, 
+  //           likes: post.isLiked ? post.likes - 1 : post.likes + 1, 
+  //           isLiked: !post.isLiked 
+  //         }
+  //       : post
+  //   ));
+  // };
 
   const handleSave = (postId) => {
     setLikedPosts(likedPosts.map(post => 
@@ -152,7 +152,7 @@ const LikedPosts = () => {
       {likedPosts.map((post) => (
         <div key={post.id} className=" rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
           {/* Post Header */}
-          <div className="flex items-center justify-between p-4 pb-2">
+          <div className="flex items-center justify-between p-2 pb-2">
             <div className="flex items-center space-x-3">
               <img 
                 src={post.user.avatar} 
@@ -167,7 +167,7 @@ const LikedPosts = () => {
                     className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
                       post.isFollowing
                         ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                        : 'bg-blue-500 text-white hover:bg-blue-600'
+                        : 'bg-[#222831] text-white hover:bg-[#948979]'
                     }`}
                   >
                     {post.isFollowing ? (
@@ -191,23 +191,23 @@ const LikedPosts = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs text-red-500 bg-red-50 px-2 py-1 rounded-full">
-                {post.likedAt}
-              </span>
               <button className="text-gray-400 hover:text-gray-600">
                 <MoreHorizontal className="w-5 h-5" />
               </button>
             </div>
           </div>
+          <span className="text-xs mx-4 text-red-500 bg-red-50 px-2 py-1 rounded-full">
+                {post.likedAt}
+          </span>
 
           {/* Post Content */}
-          <div className="px-4 pb-3">
+          <div className="px-2 pb-2">
             <p className="text-gray-800 leading-relaxed">{post.content}</p>
           </div>
 
           {/* Post Image */}
           {post.image && (
-            <div className="px-4 pb-3">
+            <div className="px-1 pb-2">
               <img 
                 src={post.image} 
                 alt="Post content"
@@ -220,7 +220,7 @@ const LikedPosts = () => {
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
             <div className="flex items-center space-x-6">
               <button 
-                onClick={() => handleLike(post.id)}
+                onClick={() => handleUnlike(post.id)}
                 className={`flex items-center space-x-2 transition-all duration-200 ${
                   post.isLiked 
                     ? 'text-red-500 scale-105' 
@@ -261,14 +261,6 @@ const LikedPosts = () => {
                   <Bookmark className="w-5 h-5" />
                 )}
               </button>
-              
-              <button 
-                onClick={() => handleUnlike(post.id)}
-                className="text-red-500 hover:text-red-600 transition-colors"
-                title="Remove from liked posts"
-              >
-                <Heart className="w-5 h-5 fill-current" />
-              </button>
             </div>
           </div>
         </div>
@@ -276,7 +268,7 @@ const LikedPosts = () => {
       
       {/* Load More Button */}
       <div className="text-center py-6">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+        <button className="bg-[#222831] hover:bg-[#393E46] text-white px-6 py-2 rounded-lg transition-colors">
           Load More Liked Posts
         </button>
       </div>

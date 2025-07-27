@@ -47,6 +47,8 @@ const Posts = () => {
     }
   ]);
 
+  const [openMenuId, setOpenMenuId] = useState(null);
+
   const user = {
     name: "Alex Johnson",
     username: "@alexjohnson",
@@ -54,28 +56,28 @@ const Posts = () => {
   };
 
   const handleLike = (postId) => {
-    setPosts(posts.map(post => 
-      post.id === postId 
-        ? { 
-            ...post, 
-            likes: post.isLiked ? post.likes - 1 : post.likes + 1, 
-            isLiked: !post.isLiked 
+    setPosts(posts.map(post =>
+      post.id === postId
+        ? {
+            ...post,
+            likes: post.isLiked ? post.likes - 1 : post.likes + 1,
+            isLiked: !post.isLiked
           }
         : post
     ));
   };
 
   const handleSave = (postId) => {
-    setPosts(posts.map(post => 
-      post.id === postId 
+    setPosts(posts.map(post =>
+      post.id === postId
         ? { ...post, isSaved: !post.isSaved }
         : post
     ));
   };
 
   const handleShare = (postId) => {
-    setPosts(posts.map(post => 
-      post.id === postId 
+    setPosts(posts.map(post =>
+      post.id === postId
         ? { ...post, shares: post.shares + 1 }
         : post
     ));
@@ -89,8 +91,10 @@ const Posts = () => {
   };
 
   const handleEdit = (postId) => {
-    console.log(`Edit post ${postId}`);
-    // You would implement edit functionality here
+    if (window.confirm('Are you sure you want to edit this post?')) {
+      console.log(`Edit post ${postId}`);
+    }
+    
   };
 
   if (posts.length === 0) {
@@ -108,12 +112,12 @@ const Posts = () => {
   return (
     <div className="space-y-6">
       {posts.map((post) => (
-        <div key={post.id} className=" rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+        <div key={post.id} className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
           {/* Post Header */}
-          <div className="flex items-center justify-between p-4 pb-2">
+          <div className="flex items-center justify-between p-2 pb-2">
             <div className="flex items-center space-x-3">
-              <img 
-                src={user.avatar} 
+              <img
+                src={user.avatar}
                 alt={user.name}
                 className="w-10 h-10 rounded-full object-cover"
               />
@@ -127,39 +131,45 @@ const Posts = () => {
               </div>
             </div>
             <div className="relative">
-              <button className="text-gray-400 hover:text-gray-600 p-1">
+              <button
+                onClick={() =>
+                  setOpenMenuId(openMenuId === post.id ? null : post.id)
+                }
+                className="text-gray-400 hover:text-gray-600 p-1"
+              >
                 <MoreHorizontal className="w-5 h-5" />
               </button>
-              {/* Dropdown menu would go here */}
-              <div className="absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg py-1 w-32 hidden group-hover:block">
-                <button 
-                  onClick={() => handleEdit(post.id)}
-                  className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  <Edit3 className="w-4 h-4" />
-                  <span>Edit</span>
-                </button>
-                <button 
-                  onClick={() => handleDelete(post.id)}
-                  className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50"
-                >
-                  <Trash2 className="w-4 h-4" />
-                  <span>Delete</span>
-                </button>
-              </div>
+              {openMenuId === post.id && (
+                <div className="absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg py-1 w-32 z-10">
+                  <button
+                    onClick={() => handleEdit(post.id)}
+                    className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    <Edit3 className="w-4 h-4" />
+                    <span>Edit</span>
+                  </button>
+                  <button
+                    onClick={() => handleDelete(post.id)}
+                    className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    <span>Delete</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Post Content */}
-          <div className="px-4 pb-3">
+          <div className="px-2 pb-2">
             <p className="text-gray-800 leading-relaxed">{post.content}</p>
           </div>
 
           {/* Post Image */}
           {post.image && (
-            <div className="px-4 pb-3">
-              <img 
-                src={post.image} 
+            <div className="px-1 pb-2">
+              <img
+                src={post.image}
                 alt="Post content"
                 className="w-full rounded-lg object-cover max-h-80"
               />
@@ -167,26 +177,26 @@ const Posts = () => {
           )}
 
           {/* Post Actions */}
-          <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+          <div className="flex items-center justify-between px-3 py-2 border-t border-gray-100">
             <div className="flex items-center space-x-6">
-              <button 
+              <button
                 onClick={() => handleLike(post.id)}
                 className={`flex items-center space-x-2 transition-all duration-200 ${
-                  post.isLiked 
-                    ? 'text-red-500 scale-105' 
+                  post.isLiked
+                    ? 'text-red-500 scale-105'
                     : 'text-gray-500 hover:text-red-500'
                 }`}
               >
                 <Heart className={`w-5 h-5 ${post.isLiked ? 'fill-current' : ''}`} />
                 <span className="text-sm font-medium">{post.likes}</span>
               </button>
-              
+
               <button className="flex items-center space-x-2 text-gray-500 hover:text-blue-500 transition-colors">
                 <MessageCircle className="w-5 h-5" />
                 <span className="text-sm font-medium">{post.comments}</span>
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => handleShare(post.id)}
                 className="flex items-center space-x-2 text-gray-500 hover:text-green-500 transition-colors"
               >
@@ -195,11 +205,11 @@ const Posts = () => {
               </button>
             </div>
 
-            <button 
+            <button
               onClick={() => handleSave(post.id)}
               className={`transition-all duration-200 ${
-                post.isSaved 
-                  ? 'text-blue-600 scale-110' 
+                post.isSaved
+                  ? 'text-blue-600 scale-110'
                   : 'text-gray-500 hover:text-blue-600'
               }`}
               title={post.isSaved ? "Remove from saved" : "Save post"}
@@ -213,10 +223,10 @@ const Posts = () => {
           </div>
         </div>
       ))}
-      
+
       {/* Load More Button */}
       <div className="text-center py-6">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+        <button className="bg-[#222831] hover:bg-[#948979] text-white px-6 py-2 rounded-lg transition-colors">
           Load More Posts
         </button>
       </div>

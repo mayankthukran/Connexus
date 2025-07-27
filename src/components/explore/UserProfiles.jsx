@@ -86,31 +86,31 @@ const UserProfiles = () => {
 
   return (
     <div className="user-profiles">
-      <div className="space-y-4">
+      <div className="space-y-1">
         {users.map(user => (
-          <div key={user.id} className="flex items-center p-4 rounded-lg transition duration-200 border border-gray-100">
+          <div key={user.id} className="flex items-center p-2 rounded-lg transition duration-200">
             <div className="flex-shrink-0">
               <div className="relative">
                 <img
                   src={user.avatar}
                   alt={`${user.name}'s avatar`}
-                  className="w-16 h-16 rounded-full object-cover border-2 border-white shadow"
+                  className="w-16 h-16 rounded-full object-cover border-2 border-[#222831] shadow"
                 />
-                <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-green-400 rounded-full border-2 border-white"></div>
+                <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-green-400 rounded-full border border-white"></div>
               </div>
             </div>
             
             <div className="ml-4 flex-grow">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-[#DFD0B8] text-lg">{user.name}</h3>
-                <span className="text-xs bg-[#DFD0B8] text-blue-800 px-2 py-1 rounded-full">
+                <h3 className="font-semibold text-[#222831] text-lg">{user.name}</h3>
+                <span className="text-xs bg-[#222831] text-white px-2 py-1 rounded-full">
                   {user.followers} followers
                 </span>
               </div>
-              <p className="text-sm text-white">@{user.username}</p>
-              <p className="text-xs text-white mt-1">{user.location}</p>
+              <p className="text-sm text-[#393E46]">@{user.username}</p>
+              <p className="text-xs text-[#393E46] mt-1">{user.location}</p>
               
-              <div className="flex mt-2 text-xs text-white space-x-4">
+              <div className="flex mt-2 text-xs text-[#393E46] space-x-4">
                 <span>{user.posts} posts</span>
                 <span>{user.following} following</span>
               </div>
@@ -122,7 +122,7 @@ const UserProfiles = () => {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   user.isFollowing
                     ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    : 'bg-[#948979] text-white hover:bg-blue-600'
+                    : 'bg-[#948979] text-white hover:bg-[#393E46]'
                 }`}
               >
                 {user.isFollowing ? (
@@ -147,7 +147,7 @@ const UserProfiles = () => {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full font-medium disabled:opacity-50"
+            className="px-6 py-2 bg-[#393E46] hover:bg-gray-400 text-white rounded-full font-medium disabled:opacity-50"
           >
             {loading ? "Loading..." : "Load More"}
           </button>
