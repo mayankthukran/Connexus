@@ -86,9 +86,9 @@ const SavedPosts = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
       {savedPosts.map((post) => (
-        <div key={post.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col">
+        <div key={post.id} className="bg-[#393E46] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col">
           {/* Post Header */}
           <div className="flex items-center justify-between p-3 pb-2">
             <div className="flex items-center space-x-2">
@@ -99,12 +99,12 @@ const SavedPosts = () => {
               />
               <div className="min-w-0 flex-1">
                 <h3 className="font-semibold text-gray-900 text-sm truncate">{post.user.name}</h3>
-                <div className="flex items-center space-x-1 text-xs text-gray-500">
+                <div className="flex items-center space-x-1 text-xs text-white">
                   <span className="truncate">{post.user.username}</span>
                 </div>
               </div>
             </div>
-            <button className="text-gray-400 hover:text-gray-600 flex-shrink-0">
+            <button className="text-white hover:text-gray-300 flex-shrink-0">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -118,7 +118,7 @@ const SavedPosts = () => {
 
           {/* Post Image */}
           {post.image && (
-            <div className="px-3 pb-2">
+            <div className="px-2 pb-2">
               <img 
                 src={post.image} 
                 alt="Post content"
@@ -129,7 +129,7 @@ const SavedPosts = () => {
 
           {/* Post Content */}
           <div className="px-3 pb-2 flex-1">
-            <p className="text-gray-800 text-sm leading-relaxed line-clamp-3">{post.content}</p>
+            <p className="text-white text-sm leading-relaxed line-clamp-3">{post.content}</p>
           </div>
 
           {/* Post Actions */}
@@ -138,19 +138,19 @@ const SavedPosts = () => {
               <button 
                 onClick={() => handleLike(post.id)}
                 className={`flex items-center space-x-1 transition-colors ${
-                  post.isLiked ? 'text-red-500' : 'text-gray-500 hover:text-red-500'
+                  post.isLiked ? 'text-red-500' : 'text-white hover:text-red-500'
                 }`}
               >
                 <Heart className={`w-4 h-4 ${post.isLiked ? 'fill-current' : ''}`} />
                 <span className="text-xs font-medium">{post.likes}</span>
               </button>
               
-              <button className="flex items-center space-x-1 text-gray-500 hover:text-blue-500 transition-colors">
+              <button className="flex items-center space-x-1 text-white hover:text-blue-500 transition-colors">
                 <MessageCircle className="w-4 h-4" />
                 <span className="text-xs font-medium">{post.comments}</span>
               </button>
               
-              <button className="flex items-center space-x-1 text-gray-500 hover:text-green-500 transition-colors">
+              <button className="flex items-center space-x-1 text-white hover:text-green-500 transition-colors">
                 <Share2 className="w-4 h-4" />
                 <span className="text-xs font-medium">{post.shares}</span>
               </button>
@@ -169,7 +169,7 @@ const SavedPosts = () => {
       
       {/* Load More Button */}
       <div className="col-span-full text-center py-6">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+        <button className="bg-[#393E46] hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
           Load More Saved Posts
         </button>
       </div>

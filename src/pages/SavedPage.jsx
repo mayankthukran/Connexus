@@ -1,7 +1,5 @@
 import Navbar from '../components/home/Navbar';
-import SavedPosts from '../components/saved/SavedPosts';
-import TopCreators from '../components/home/TopCreators';
-import RelatedPosts from '../components/home/RelatedPosts';
+import SavedPosts from '../components/saved/SavedPosts'
 import { useState } from 'react';
 
 const SavedPage = () => {

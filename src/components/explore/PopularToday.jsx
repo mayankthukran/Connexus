@@ -118,16 +118,16 @@ const PopularToday = () => {
   
   if (loading) {
     return (
-      <div className="p-4 bg-white dark:bg-[#393E46] rounded-xl shadow-md">
-        <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">Popular Today</h2>
+      <div className="p-3 pt-0 rounded-xl shadow-md">
+        <h2 className="text-xl font-bold text-[#222831] mb-4">Popular Today</h2>
         <div className="flex border-b border-gray-200 dark:border-gray-600 mb-4">
           {popularTabs.map(tab => (
             <button
               key={tab.id}
               className={`px-4 py-2 -mb-px text-sm font-medium ${
                 tab.active
-                  ? 'text-blue-600 border-b-2 border-blue-600 dark:text-blue-400 dark:border-blue-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                  ? 'text-[#222831] border-b-2 border-[#222831]'
+                : 'text-[#948979] hover:text-[#393E46]'
               }`}
             >
               {tab.label}
@@ -141,16 +141,16 @@ const PopularToday = () => {
   
   if (error) {
     return (
-      <div className="p-4 bg-white dark:bg-[#393E46] rounded-xl shadow-md">
-        <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">Popular Today</h2>
+      <div className="p-3 pt-0 rounded-xl shadow-md">
+        <h2 className="text-xl font-bold text-[#222831] mb-4">Popular Today</h2>
         <div className="flex border-b border-gray-200 dark:border-gray-600 mb-4">
           {popularTabs.map(tab => (
             <button
               key={tab.id}
               className={`px-4 py-2 -mb-px text-sm font-medium ${
                 tab.active
-                  ? 'text-blue-600 border-b-2 border-blue-600 dark:text-blue-400 dark:border-blue-400'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                  ? 'text-[#222831] border-b-2 border-[#222831]'
+                : 'text-[#948979] hover:text-[#393E46]'
               }`}
             >
               {tab.label}
@@ -173,8 +173,8 @@ const PopularToday = () => {
   const activeContent = getActiveTabContent();
   
   return (
-    <div className="p-4 bg-white dark:bg-[#393E46] rounded-xl shadow-md">
-      <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">Popular Today</h2>
+    <div className="p-3 pt-0 rounded-xl shadow-md">
+      <h2 className="text-xl font-bold text-[#222831] mb-4">Popular Today</h2>
       
       {/* Tabs */}
       <div className="flex border-b border-gray-200 dark:border-gray-600 mb-4">
@@ -183,8 +183,8 @@ const PopularToday = () => {
             key={tab.id}
             className={`px-4 py-2 -mb-px text-sm font-medium transition-colors ${
               tab.active
-                ? 'text-blue-600 border-b-2 border-blue-600 dark:text-blue-400 dark:border-blue-400'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                ? 'text-[#222831] border-b-2 border-[#222831]'
+                : 'text-[#948979] hover:text-[#393E46]'
             }`}
             onClick={() => switchTab(tab.id)}
           >
@@ -221,7 +221,7 @@ const PopularToday = () => {
                         className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
                           post.isFollowing
                             ? 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200'
-                            : 'bg-blue-500 text-white hover:bg-blue-600'
+                            : 'bg-[#948979] text-white hover:bg-blue-600'
                         }`}
                       >
                         {post.isFollowing ? (
@@ -244,7 +244,7 @@ const PopularToday = () => {
               </div>
 
               {/* Post Image */}
-              <div className="px-3 pb-2">
+              <div className="px-2 pb-2">
                 <img
                   src={`https://picsum.photos/300/200?random=${index + 200}`}
                   alt={post.photo.title}
@@ -311,7 +311,7 @@ const PopularToday = () => {
       
       {/* View All Button */}
       <div className="text-center mt-4">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors dark:bg-blue-600 dark:hover:bg-blue-700">
+        <button className="bg-[#222831] hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-color">
           View All Popular
         </button>
       </div>

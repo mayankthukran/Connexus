@@ -112,7 +112,7 @@ const RelatedPosts = () => {
                       className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
                         post.isFollowing
                           ? 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200'
-                          : 'bg-blue-500 text-white hover:bg-blue-600'
+                          : 'bg-[#948979] text-white hover:bg-blue-600'
                       }`}
                     >
                       {post.isFollowing ? (

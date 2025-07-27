@@ -130,7 +130,7 @@ const ExplorePage = () => {
               
               {!searchQuery && !error && (
                 <div className="mt-6">
-                  <h2 className="text-xl font-semibold mb-4">Suggested Users</h2>
+                  <h2 className="text-xl font-semibold text-[#948979] mb-4">Suggested Users</h2>
                   {/* Using empty users prop so component will fetch from APIs */}
                   <UserProfiles />
                 </div>

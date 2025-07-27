@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import ExplorePage from './pages/ExplorePage';
 import AuthPage from './pages/AuthPage';
 import SavedPage from './pages/SavedPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
@@ -17,6 +18,7 @@ function App() {
           />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path='/saved' element={<SavedPage />}/>
+            <Route path='/profile' element={<ProfilePage />}/>
           </Routes>
       </BrowserRouter>
       </div>

@@ -3,8 +3,7 @@ import { useState } from "react";
 import { X, Menu } from "lucide-react"; // Optional: replace with emojis if you don’t use lucide-react
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const userId = "123"; // Replace with logged-in user ID from context or auth
+  const [isOpen, setIsOpen] = useState(false); // Replace with logged-in user ID from context or auth
 
   return (
     <>
@@ -25,7 +24,7 @@ const Navbar = () => {
             <Link to="/saved" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
               Saved
             </Link>
-            <Link to={`/profile/${userId}`} className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
+            <Link to={'/profile'} className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
               Profile
             </Link>
           </div>
@@ -75,7 +74,7 @@ const Navbar = () => {
           <Link to="/saved" onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-gray-200 hover:text-blue-500">
             Saved
           </Link>
-          <Link to={`/profile/${userId}`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-gray-200 hover:text-blue-500">
+          <Link to={'/profile'} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-gray-200 hover:text-blue-500">
             Profile
           </Link>
           <Link to="/auth" onClick={() => setIsOpen(false)} className="bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600 text-center">
