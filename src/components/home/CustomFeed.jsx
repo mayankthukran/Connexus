@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Heart, MessageCircle, Share2, Bookmark, BookmarkCheck, UserPlus, UserCheck, MoreHorizontal } from 'lucide-react';
 
 const CustomFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -7,15 +8,22 @@ const CustomFeed = () => {
   useEffect(() => {
     const fetchFeed = async () => {
       try {
-        
         const userRes = await fetch("https://randomuser.me/api/?results=50");
         const photoRes = await fetch("https://jsonplaceholder.typicode.com/photos?_limit=50");
         const userData = await userRes.json();
         const photoData = await photoRes.json();
 
         const combined = userData.results.map((user, index) => ({
+          id: index + 1,
           user,
           photo: photoData[index],
+          likes: Math.floor(Math.random() * 500) + 10,
+          comments: Math.floor(Math.random() * 50) + 1,
+          shares: Math.floor(Math.random() * 20) + 1,
+          timeAgo: generateTimeAgo(),
+          isLiked: false,
+          isSaved: false,
+          isFollowing: false
         }));
 
         setPosts(combined);
@@ -29,50 +37,174 @@ const CustomFeed = () => {
     fetchFeed();
   }, []);
 
+  const generateTimeAgo = () => {
+    const times = ['2m', '5m', '15m', '30m', '1h', '2h', '3h', '5h', '8h', '12h', '1d', '2d', '3d'];
+    return times[Math.floor(Math.random() * times.length)];
+  };
+
+  const handleLike = (postId) => {
+    setPosts(posts.map(post => 
+      post.id === postId 
+        ? { 
+            ...post, 
+            likes: post.isLiked ? post.likes - 1 : post.likes + 1, 
+            isLiked: !post.isLiked 
+          }
+        : post
+    ));
+  };
+
+  const handleSave = (postId) => {
+    setPosts(posts.map(post => 
+      post.id === postId 
+        ? { ...post, isSaved: !post.isSaved }
+        : post
+    ));
+  };
+
+  const handleFollow = (postId) => {
+    setPosts(posts.map(post => 
+      post.id === postId 
+        ? { ...post, isFollowing: !post.isFollowing }
+        : post
+    ));
+  };
+
+  const handleShare = (postId) => {
+    setPosts(posts.map(post => 
+      post.id === postId 
+        ? { ...post, shares: post.shares + 1 }
+        : post
+    ));
+    // You can add actual share functionality here
+    console.log(`Shared post ${postId}`);
+  };
+
   if (loading) return <p className="text-center mt-10 text-lg">Loading feed...</p>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 mt-6">
-      {posts.map((post, index) => (
+    <div className="space-y-6 mt-6">
+      {posts.map((post) => (
         <div
-          key={index}
-          className="bg-white dark:bg-[#393E46] rounded-xl shadow-md p-2 transition hover:shadow-lg"
+          key={post.id}
+          className="bg-[#393E46] rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
         >
-          {/* User info */}
-          <div className="flex items-center gap-4 m-2">
-            <img
-              src={post.user.picture.thumbnail}
-              alt="avatar"
-              className="w-12 h-12 rounded-full"
-            />
-            <div>
-              <p className="font-semibold text-gray-800 dark:text-white">
-                {post.user.name.first} {post.user.name.last}
-              </p>
-              <p className="text-sm text-gray-500">{post.user.location.country}</p>
+          {/* Post Header */}
+          <div className="flex items-center justify-between p-4 pb-2">
+            <div className="flex items-center space-x-3">
+              <img
+                src={post.user.picture.thumbnail}
+                alt="avatar"
+                className="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <div className="flex items-center space-x-2">
+                  <h3 className="font-semibold text-gray-800 dark:text-white">
+                    {post.user.name.first} {post.user.name.last}
+                  </h3>
+                  <button
+                    onClick={() => handleFollow(post.id)}
+                    className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 ${
+                      post.isFollowing
+                        ? 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200'
+                        : 'bg-blue-500 text-white hover:bg-blue-600'
+                    }`}
+                  >
+                    {post.isFollowing ? (
+                      <>
+                        <UserCheck className="w-3 h-3" />
+                        <span>Following</span>
+                      </>
+                    ) : (
+                      <>
+                        <UserPlus className="w-3 h-3" />
+                        <span>Follow</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span>{post.user.location.country}</span>
+                  <span>•</span>
+                  <span>{post.timeAgo}</span>
+                </div>
+              </div>
             </div>
+            <button className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+              <MoreHorizontal className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Post image from JSONPlaceholder */}
-          <img
-            src={`https://picsum.photos/200/300?random=${index+1}`}
-            alt={`https://picsum.photos/200/300?random=${index+1}`}
-            className="rounded-md mb-4 w-full h-96 object-cover"
-          />
+          {/* Post Content */}
+          <div className="px-4 pb-2">
+            <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
+              {post.photo.title}
+            </p>
+          </div>
 
-          {/* Post caption from photo title */}
-          <p className="text-gray-700 dark:text-gray-200 text-sm m-2">
-            {post.photo.title}
-          </p>
+          {/* Post Image */}
+          <div className="px-2 pb-2">
+            <img
+              src={`https://picsum.photos/500/400?random=${post.id}`}
+              alt={post.photo.title}
+              className="w-full rounded-lg object-cover max-h-96"
+            />
+          </div>
 
-          {/* Actions */}
-          <div className="flex justify-between m-2 text-sm text-gray-500">
-            <span>👍 Like</span>
-            <span>💬 Comment</span>
-            <span>🔖 Save</span>
+          {/* Post Actions */}
+          <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100 dark:border-gray-600">
+            <div className="flex items-center space-x-6">
+              <button 
+                onClick={() => handleLike(post.id)}
+                className={`flex items-center space-x-2 transition-all duration-200 ${
+                  post.isLiked 
+                    ? 'text-red-500 scale-105' 
+                    : 'text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400'
+                }`}
+              >
+                <Heart className={`w-5 h-5 ${post.isLiked ? 'fill-current' : ''}`} />
+                <span className="text-sm font-medium">{post.likes}</span>
+              </button>
+              
+              <button className="flex items-center space-x-2 text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <MessageCircle className="w-5 h-5" />
+                <span className="text-sm font-medium">{post.comments}</span>
+              </button>
+              
+              <button 
+                onClick={() => handleShare(post.id)}
+                className="flex items-center space-x-2 text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
+              >
+                <Share2 className="w-5 h-5" />
+                <span className="text-sm font-medium">{post.shares}</span>
+              </button>
+            </div>
+
+            <button 
+              onClick={() => handleSave(post.id)}
+              className={`transition-all duration-200 ${
+                post.isSaved 
+                  ? 'text-blue-600 scale-110' 
+                  : 'text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400'
+              }`}
+              title={post.isSaved ? "Remove from saved" : "Save post"}
+            >
+              {post.isSaved ? (
+                <BookmarkCheck className="w-5 h-5 fill-current" />
+              ) : (
+                <Bookmark className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
       ))}
+      
+      {/* Load More Button */}
+      <div className="text-center py-6">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors dark:bg-blue-600 dark:hover:bg-blue-700">
+          Load More Posts
+        </button>
+      </div>
     </div>
   );
 };

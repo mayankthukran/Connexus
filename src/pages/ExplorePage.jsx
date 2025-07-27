@@ -92,7 +92,7 @@ const ExplorePage = () => {
           
           {/* Scrollable middle feed - full width on mobile */}
           <div className="lg:col-span-5 mt-16 lg:mt-6">
-            <div className="bg-white rounded-lg shadow p-6 mb-8 dark:bg-gray-800 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
+            <div className="rounded-lg shadow p-3 mb-8 bg-[#393E46] h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto ">
               <Search 
                 searchQuery={searchQuery}
                 onSearch={handleSearch}

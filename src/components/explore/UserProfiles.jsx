@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { UserPlus, UserCheck } from 'lucide-react';
 
 const UserProfiles = () => {
   const [users, setUsers] = useState([]);
@@ -31,7 +32,8 @@ const UserProfiles = () => {
         location: `${user.location.city}, ${user.location.country}`,
         followers: Math.floor(Math.random() * 5000),
         following: Math.floor(Math.random() * 500),
-        posts: Math.floor(Math.random() * 100)
+        posts: Math.floor(Math.random() * 100),
+        isFollowing: false
       }));
       
       setUsers(prevUsers => [...prevUsers, ...combinedData]);
@@ -43,6 +45,18 @@ const UserProfiles = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleFollow = (userId) => {
+    setUsers(users.map(user => 
+      user.id === userId 
+        ? { 
+            ...user, 
+            isFollowing: !user.isFollowing,
+            followers: user.isFollowing ? user.followers - 1 : user.followers + 1
+          }
+        : user
+    ));
   };
 
   const loadMore = () => {
@@ -104,9 +118,24 @@ const UserProfiles = () => {
             
             <div className="flex-shrink-0 ml-2">
               <button
-                className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition"
+                onClick={() => handleFollow(user.id)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  user.isFollowing
+                    ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-blue-500 text-white hover:bg-blue-600'
+                }`}
               >
-                Follow
+                {user.isFollowing ? (
+                  <>
+                    <UserCheck className="w-4 h-4" />
+                    <span>Following</span>
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="w-4 h-4" />
+                    <span>Follow</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

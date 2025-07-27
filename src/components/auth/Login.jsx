@@ -120,7 +120,7 @@ const Login = ({ toggleAuthMode }) => {
           </div>
           
           <div className="text-sm">
-            <a href="#" className="text-blue-600 hover:text-blue-800">
+            <a href="#" className="text-[#DFD0B8] hover:text-blue-800">
               Forgot password?
             </a>
           </div>
@@ -129,7 +129,7 @@ const Login = ({ toggleAuthMode }) => {
         <div className="mb-6">
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#393E46] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -146,7 +146,7 @@ const Login = ({ toggleAuthMode }) => {
       <div className="text-center">
         <p className="text-sm text-gray-600">
           Don't have an account?{' '}
-          <button onClick={toggleAuthMode} className="text-blue-600 hover:text-blue-800 font-medium">
+          <button onClick={toggleAuthMode} className="text-[#393E46] hover:text-blue-800 font-medium">
             Sign up
           </button>
         </p>
