@@ -6,22 +6,18 @@ import SavedPage from './pages/SavedPage';
 import ProfilePage from './pages/ProfilePage';
 
 function App() {
-  const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
   return (
     <div className="App">
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<AuthPage />} />
-            <Route 
-            path="/home" 
-            element={isLoggedIn ? <HomePage /> : <Navigate to="/" />} 
-          />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path='/saved' element={<SavedPage />}/>
             <Route path='/profile' element={<ProfilePage />}/>
           </Routes>
       </BrowserRouter>
-      </div>
+    </div>
   );
 }
 

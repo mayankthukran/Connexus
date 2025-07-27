@@ -147,7 +147,7 @@ const CustomFeed = () => {
             <img
               src={`https://picsum.photos/500/400?random=${post.id}`}
               alt={post.photo.title}
-              className="w-full rounded-lg object-cover max-h-96"
+              className="w-full rounded-lg object-cover max-h-128"
             />
           </div>
 

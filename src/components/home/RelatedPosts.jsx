@@ -135,7 +135,7 @@ const RelatedPosts = () => {
               <img
                 src={`https://picsum.photos/300/200?random=${post.id + 100}`}
                 alt={post.photo.title}
-                className="rounded-lg w-full h-32 object-cover"
+                className="rounded-lg w-full h-64 object-cover"
               />
             </div>
 

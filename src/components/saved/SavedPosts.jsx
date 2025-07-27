@@ -122,7 +122,7 @@ const SavedPosts = () => {
               <img 
                 src={post.image} 
                 alt="Post content"
-                className="w-full rounded-lg object-cover h-32"
+                className="w-full rounded-lg object-cover h-64"
               />
             </div>
           )}

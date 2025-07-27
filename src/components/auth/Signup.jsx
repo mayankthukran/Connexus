@@ -87,24 +87,6 @@ const Signup = ({ toggleAuthMode }) => {
       
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">
-            Full Name
-          </label>
-          <input
-            className={`shadow appearance-none border ${
-              errors.fullName ? 'border-red-500' : 'border-gray-300'
-            } rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            id="fullName"
-            type="text"
-            name="fullName"
-            placeholder="John Doe"
-            value={formData.fullName}
-            onChange={handleChange}
-          />
-          {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
-        </div>
-        
-        <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
             Username
           </label>
@@ -188,11 +170,11 @@ const Signup = ({ toggleAuthMode }) => {
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
               I agree to the{' '}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="#" className="text-[#DFD0B8] hover:underline">
                 Terms of Service
               </a>{' '}
               and{' '}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="#" className="text-[#DFD0B8] hover:underline">
                 Privacy Policy
               </a>
             </label>
@@ -205,7 +187,7 @@ const Signup = ({ toggleAuthMode }) => {
         <div className="mb-6">
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#393E46] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#222831] hover:bg-[#393E46] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -222,8 +204,8 @@ const Signup = ({ toggleAuthMode }) => {
       <div className="text-center">
         <p className="text-sm text-gray-600">
           Already have an account?{' '}
-          <button onClick={toggleAuthMode} className="text-blue-600 hover:text-blue-800 font-medium">
-            Sign in
+          <button onClick={toggleAuthMode} className="text-[#393E46] hover:text-[#DFD0B8] font-medium">
+            Log in
           </button>
         </p>
       </div>

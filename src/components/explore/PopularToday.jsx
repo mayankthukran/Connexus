@@ -248,7 +248,7 @@ const PopularToday = () => {
                 <img
                   src={`https://picsum.photos/300/200?random=${index + 200}`}
                   alt={post.photo.title}
-                  className="rounded-lg w-full h-32 object-cover"
+                  className="rounded-lg w-full h-64 object-cover"
                 />
               </div>
 
