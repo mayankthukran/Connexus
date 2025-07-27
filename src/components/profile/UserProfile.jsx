@@ -26,7 +26,7 @@ const UserProfile = () => {
   return (
     <div className=" rounded-lg shadow-md overflow-hidden">
       {/* Cover Image */}
-      <div className="relative h-48 bg-gradient-to-r from-[#DFD0B8] to-[#222831]">
+      <div className="relative h-48 bg-gradient-to-r from-[#948979] to-[#222831]">
         
         {isOwnProfile && (
           <button className="absolute top-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all">

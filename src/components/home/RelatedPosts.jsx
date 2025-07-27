@@ -197,7 +197,7 @@ const RelatedPosts = () => {
       
       {/* View More Button */}
       <div className="text-center mt-4">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors dark:bg-blue-600 dark:hover:bg-blue-700">
+        <button className="bg-[#222831] hover:bg-[#948979] text-white px-4 py-2 rounded-lg text-sm transition-colors">
           View More Posts
         </button>
       </div>
