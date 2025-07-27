@@ -92,7 +92,7 @@ const ExplorePage = () => {
           
           {/* Scrollable middle feed - full width on mobile */}
           <div className="lg:col-span-5 mt-16 lg:mt-6">
-            <div className="rounded-lg shadow p-3 mb-8 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto ">
+            <div className="rounded-lg shadow p-3 h-[calc(95vh-5rem)] lg:h-[calc(100vh-6rem)] overflow-y-auto ">
               <Search 
                 searchQuery={searchQuery}
                 onSearch={handleSearch}
@@ -140,7 +140,7 @@ const ExplorePage = () => {
           
           {/* Fixed right sidebar - hidden on mobile */}
           <div className="hidden lg:block lg:col-span-3 sticky mt-6 self-start">
-            <div className="mb-6 h-[calc(100vh-5rem)] lg:h-[calc(95vh-3rem)] overflow-y-auto pr-0 lg:pr-2">
+            <div className="mb-6 h-[calc(95vh-5rem)] lg:h-[calc(100vh-6rem)] overflow-y-auto pr-0 lg:pr-2">
               <PopularToday />
             </div>
           </div>

@@ -44,7 +44,7 @@ const SavedPage = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-2">Saved Posts</h2>
               <p className="text-gray-600">Your collection of saved posts</p>
             </div>
-            <div className="h-[calc(100vh-8rem)] lg:h-[calc(100vh-6rem)] overflow-y-auto pr-0 lg:pr-2">
+            <div className="h-[calc(100vh-8rem)] lg:h-[calc(90vh-6rem)] overflow-y-auto pr-0 lg:pr-2">
               <SavedPosts />
             </div>
           </div>
