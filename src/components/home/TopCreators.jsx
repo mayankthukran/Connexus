@@ -7,7 +7,7 @@ const TopCreators = () => {
   useEffect(() => {
     const fetchCreators = async () => {
       try {
-        const res = await fetch("https://randomuser.me/api/?results=5"); // Top 8 users
+        const res = await fetch("https://randomuser.me/api/?results=5"); // Top 5 users
         const data = await res.json();
         const topUsers = data.results.map(user => ({
           ...user,
